@@ -6,5 +6,6 @@ Copy these files into the active `versions/MAJOR.MINOR/` dossier and replace ins
 - `plan.md`: delivery approach and requirement-to-verification mapping
 - `review.md`: critique and disposition of findings
 - `acceptance.md`: evidence that released behavior meets accepted requirements
+- `fix.md`: defect against an accepted requirement, root cause, correction, and regression evidence
 - `decision.md`: consequential product decision
 - `release.yaml`: immutable patch-release linkage
