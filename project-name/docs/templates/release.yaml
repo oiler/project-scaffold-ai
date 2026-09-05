@@ -1,20 +1,20 @@
-version: MAJOR.MINOR.PATCH
+version: "[MAJOR.MINOR.PATCH]"
 status: planned
 released_at: null
 
 product:
-  version_folder: versions/MAJOR.MINOR
+  version_folder: "versions/[MAJOR.MINOR]"
   included_specs: []
   included_fixes: []
   accepted_risks: []
 
 code:
-  repository: organization/project-code
-  tag: vMAJOR.MINOR.PATCH
-  commit: FULL_CODE_COMMIT_SHA
+  repository: "[organization/project-code]"
+  tag: "[vMAJOR.MINOR.PATCH]"
+  commit: "[full code commit SHA]"
 
 documentation:
-  baseline_commit: FULL_DOCS_BASELINE_COMMIT_SHA
+  baseline_commit: "[full docs baseline commit SHA]"
 
 verification:
   acceptance_records: []

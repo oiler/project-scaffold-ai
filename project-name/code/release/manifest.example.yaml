@@ -1,15 +1,15 @@
-version: MAJOR.MINOR.PATCH
-product_version: MAJOR.MINOR
+version: "[MAJOR.MINOR.PATCH]"
+product_version: "[MAJOR.MINOR]"
 
 documentation:
-  repository: organization/project-docs
-  baseline_commit: FULL_DOCS_BASELINE_COMMIT_SHA
+  repository: "[organization/project-docs]"
+  baseline_commit: "[full docs baseline commit SHA]"
   implemented_specs: []
   implemented_fixes: []
 
 source:
-  repository: organization/project-code
-  tag: vMAJOR.MINOR.PATCH
+  repository: "[organization/project-code]"
+  tag: "[vMAJOR.MINOR.PATCH]"
 
 build:
   command: "[document reproducible build command]"

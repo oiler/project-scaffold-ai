@@ -1,5 +1,5 @@
 # Rename this file to CODEOWNERS and replace placeholders to activate it on GitHub.
-* @organization/product-owner
-/policies/ @organization/product-owner
-/versions/ @organization/product-owner
-/decisions/ @organization/product-owner
+* @[organization]/product-owner
+/policies/ @[organization]/product-owner
+/versions/ @[organization]/product-owner
+/decisions/ @[organization]/product-owner
