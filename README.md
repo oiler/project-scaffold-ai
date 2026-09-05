@@ -17,10 +17,10 @@ This workspace is a starting point rather than a prescribed development process.
 
 ## Layout
 
-- `project-name/`: the scaffold. Copy it; never edit it in place for a project.
+- `project-name/`: the scaffold. Copy it; never edit it in place for a project. Its root holds a workspace-level `AGENTS.md` that routes work between `docs/` and `code/`; the workspace directory is not itself a repository.
 - `scripts/new-project.sh`: deterministic bootstrap for a new workspace.
 
-`AGENTS.md` is authoritative in each repository. `CLAUDE.md` imports it and adds nothing else.
+`AGENTS.md` is authoritative at each level. `CLAUDE.md` imports it and adds nothing else; the workspace `CLAUDE.md` imports all three.
 
 ## Placeholder convention
 
@@ -47,7 +47,7 @@ The script:
 3. Initializes `docs/` and `code/` as independent git repositories on `master` with an initial commit. Pass `--no-git` to skip.
 4. Prints every remaining bracketed placeholder so nothing is missed.
 
-Then, in the new workspace:
+Then, in the new workspace. Start sessions at the workspace root so one session carries context from specification through implementation to release records; sessions inside `docs/` or `code/` alone are fine for focused work.
 
 1. Define the durable product purpose in `docs/OBJECTIVE.md`.
 2. Resolve the placeholders the script listed. Owners and dates are safe to fill immediately; scope, outcomes, and requirements need real product input.
