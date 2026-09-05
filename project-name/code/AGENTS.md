@@ -30,6 +30,10 @@ If implementation needs behavior not defined by an accepted specification, stop 
 - Do not weaken tests merely to make a change pass.
 - Avoid destructive data migrations without an explicit recovery and approval path.
 
+## Document status
+
+Use one of: `proposed`, `draft`, `in_review`, `accepted`, `superseded`, `withdrawn`. ADRs start as `proposed`; other documents start as `draft`.
+
 ## Validation
 
 Project-specific commands belong in `CONTRIBUTING.md`. Until defined, report that validation is unspecified rather than inventing a successful check.

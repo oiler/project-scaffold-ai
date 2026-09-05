@@ -39,7 +39,7 @@ Never silently reconcile conflicting authoritative documents.
 
 ## Document status
 
-Use one of: `draft`, `in_review`, `accepted`, `superseded`, `withdrawn`. Release records may additionally use `planned` and `released`.
+Use one of: `proposed`, `draft`, `in_review`, `accepted`, `superseded`, `withdrawn`. Decision records start as `proposed`; other artifacts start as `draft`. Release records may additionally use `planned` and `released`. Version dossiers use a workstream lifecycle instead: `proposed`, `active`, `closed`.
 
 ## Before finishing
 

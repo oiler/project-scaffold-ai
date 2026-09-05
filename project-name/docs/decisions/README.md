@@ -6,4 +6,4 @@ Copy [`../templates/decision.md`](../templates/decision.md), assign the next unu
 
 | ID | Decision | Status | Date | Superseded by |
 | --- | --- | --- | --- | --- |
-| [DEC-001] | [Title] | [proposed/accepted/superseded] | [YYYY-MM-DD] | — |
+| [DEC-001] | [Title] | [proposed/in_review/accepted/superseded/withdrawn] | [YYYY-MM-DD] | — |
