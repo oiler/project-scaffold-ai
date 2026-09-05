@@ -1,0 +1,21 @@
+version: MAJOR.MINOR.PATCH
+product_version: MAJOR.MINOR
+
+documentation:
+  repository: organization/project-docs
+  baseline_commit: FULL_DOCS_BASELINE_COMMIT_SHA
+  implemented_specs: []
+  implemented_fixes: []
+
+source:
+  repository: organization/project-code
+  tag: vMAJOR.MINOR.PATCH
+
+build:
+  command: "[document reproducible build command]"
+  artifacts: []
+
+notes: >-
+  Commit the completed manifest before creating the release tag so the tag's
+  source commit contains the documentation baseline used for implementation
+  and verification.

@@ -1,0 +1,5 @@
+# Rename this file to CODEOWNERS and replace placeholders to activate it on GitHub.
+* @organization/engineering-owner
+/SECURITY.md @organization/security-owner
+/docs/adr/ @organization/engineering-owner
+/release/ @organization/engineering-owner @organization/product-owner

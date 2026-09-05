@@ -1,0 +1,26 @@
+version: MAJOR.MINOR.PATCH
+status: planned
+released_at: null
+
+product:
+  version_folder: versions/MAJOR.MINOR
+  included_specs: []
+  included_fixes: []
+  accepted_risks: []
+
+code:
+  repository: organization/project-code
+  tag: vMAJOR.MINOR.PATCH
+  commit: FULL_CODE_COMMIT_SHA
+
+documentation:
+  baseline_commit: FULL_DOCS_BASELINE_COMMIT_SHA
+
+verification:
+  acceptance_records: []
+  result: pending
+
+notes: >-
+  The documentation baseline is the commit used to authorize and verify the
+  code release. This release record may be committed afterward and therefore
+  does not require a circular reference from the code repository.
