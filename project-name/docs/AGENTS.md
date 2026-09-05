@@ -25,7 +25,7 @@ Never silently reconcile conflicting authoritative documents.
 - Treat acceptance criteria as externally observable behavior, not implementation instructions.
 - Keep product experience, interaction, and accessibility guidance in `design/`; keep software architecture and the front-end style guide (`DESIGN.md`) in the code repository.
 - Add links to evidence and record when time-sensitive evidence was checked.
-- Follow `policies/CHANGE-CONTROL.md`, `policies/VERSIONING.md`, and `policies/TRACEABILITY.md`.
+- Follow `policies/CHANGE-CONTROL.md`, `policies/VERSIONING.md`, `policies/TRACEABILITY.md`, and `policies/RELEASE.md`.
 - Report unresolved ambiguity instead of inventing product requirements.
 
 ## Change boundaries

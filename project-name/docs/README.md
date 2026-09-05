@@ -11,7 +11,7 @@ This repository explains why the product exists, what behavior is required, how 
 - [`decisions/`](decisions/README.md): consequential product decisions
 - [`research/`](research/README.md): evidence and learning
 - [`design/`](design/README.md): product experience, interaction, flows, and accessibility
-- [`policies/`](policies/README.md): versioning, traceability, and change control
+- [`policies/`](policies/README.md): versioning, traceability, change control, and release
 - [`templates/`](templates/README.md): starting points for new artifacts
 
 ## Repository relationship

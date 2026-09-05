@@ -23,6 +23,10 @@ Sessions started inside `docs/` or `code/` alone remain valid for focused work i
 - Never combine changes to both repositories in one commit. Commit each repository separately and cite the same stable IDs in both.
 - Do not run git commands against the workspace directory.
 
+## Releasing
+
+Do not create a release tag until `code/scripts/release-check.sh` passes and the judgment items in `docs/policies/RELEASE.md` are confirmed by a human.
+
 ## Before finishing
 
 Report which repository each change was committed to, and which cross-repository follow-ups remain.
