@@ -1,20 +1,21 @@
 # Product and Experience Design
 
-This directory describes how people experience and interact with the product. It is distinct from software architecture, which belongs in the code repository.
+This directory describes how people experience and interact with the product. It is distinct from software architecture and from the front-end style guide, both of which belong in the code repository.
 
 Use it for:
 
 - user journeys, task flows, and information architecture;
 - interaction patterns and behavior across states;
-- visual language, reusable interface patterns, and design tokens;
+- experience principles that guide visual and interaction decisions;
 - wireframes and prototypes;
 - accessibility guidance and design-level acceptance considerations.
+
+Visual tokens, typography, spacing, elevation, and component styling are defined in the code repository's `DESIGN.md`. Record the experience principles that should constrain that file here; do not duplicate its values.
 
 Product design supports specifications but does not silently replace them. A specification remains authoritative for required behavior. If design work introduces or changes externally observable behavior, update or amend the relevant specification through the normal change-control process.
 
 ## Contents
 
-- [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md): shared visual and interaction foundations
 - [`ACCESSIBILITY.md`](ACCESSIBILITY.md): inclusive-design requirements and practices
 - [`flows/`](flows/README.md): journeys, task flows, and state transitions
 - [`wireframes/`](wireframes/README.md): exploratory layouts and annotated screens

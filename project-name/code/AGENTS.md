@@ -17,7 +17,7 @@ If implementation needs behavior not defined by an accepted specification, stop 
 - Cite relevant `SPEC-NNN`, `FIX-NNN`, `PLAN-NNN`, and `ADR-NNN` IDs in change descriptions.
 - Map externally observable changes to tests or acceptance evidence.
 - Preserve compatibility, migration, security, privacy, accessibility, and rollback requirements.
-- Update `ARCHITECTURE.md` when the current architecture changes materially.
+- Update `ARCHITECTURE.md` when the current architecture changes materially, and `DESIGN.md` when visual tokens or component styling change.
 - Add an ADR for consequential technical choices with meaningful alternatives or long-lived consequences.
 - Keep generated output separate from source and state whether it is committed.
 - Never claim approval, acceptance, or release without evidence of human authorization.

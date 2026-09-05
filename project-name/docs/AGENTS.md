@@ -23,7 +23,7 @@ Never silently reconcile conflicting authoritative documents.
 - Preserve stable artifact IDs in filenames, headings, links, commits, and reviews.
 - Separate verified facts, decisions, hypotheses, assumptions, and open questions.
 - Treat acceptance criteria as externally observable behavior, not implementation instructions.
-- Keep product experience, interaction, and visual-design guidance in `design/`; keep software architecture in the code repository.
+- Keep product experience, interaction, and accessibility guidance in `design/`; keep software architecture and the front-end style guide (`DESIGN.md`) in the code repository.
 - Add links to evidence and record when time-sensitive evidence was checked.
 - Follow `policies/CHANGE-CONTROL.md`, `policies/VERSIONING.md`, and `policies/TRACEABILITY.md`.
 - Report unresolved ambiguity instead of inventing product requirements.

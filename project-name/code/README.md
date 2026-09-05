@@ -13,6 +13,7 @@ Product documentation repository: `[organization/project-docs]`
 - `src/`: production source
 - `tests/`: automated and manual verification support
 - `ARCHITECTURE.md`: current system structure and technical boundaries
+- `DESIGN.md`: front-end style guide (tokens, typography, component styling)
 - `docs/architecture/`: current technical architecture
 - `docs/adr/`: historical technical decisions
 - `docs/operations/`: deployment, observability, recovery, and support
