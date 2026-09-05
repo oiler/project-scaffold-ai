@@ -12,11 +12,12 @@ Product documentation repository: `[organization/project-docs]`
 
 - `src/`: production source
 - `tests/`: automated and manual verification support
+- `ARCHITECTURE.md`: current system structure and technical boundaries
 - `docs/architecture/`: current technical architecture
 - `docs/adr/`: historical technical decisions
 - `docs/operations/`: deployment, observability, recovery, and support
 - `release/`: code-side release linkage
-- `dist/`: generated distributable output, subject to the policy documented in `DESIGN.md`
+- `dist/`: generated distributable output, subject to the policy documented in `ARCHITECTURE.md`
 
 ## Product traceability
 

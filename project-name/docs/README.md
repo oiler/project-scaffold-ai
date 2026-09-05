@@ -10,6 +10,7 @@ This repository explains why the product exists, what behavior is required, how 
 - [`versions/`](versions/README.md): minor-version dossiers and patch-release records
 - [`decisions/`](decisions/README.md): consequential product decisions
 - [`research/`](research/README.md): evidence and learning
+- [`design/`](design/README.md): product experience, interaction, visual design, and accessibility
 - [`policies/`](policies/README.md): versioning, traceability, and change control
 - [`templates/`](templates/README.md): starting points for new artifacts
 

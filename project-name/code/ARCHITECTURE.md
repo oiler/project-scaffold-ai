@@ -4,9 +4,9 @@ owner: "[engineering owner]"
 last_reviewed: "[YYYY-MM-DD]"
 ---
 
-# Technical Design
+# Software Architecture
 
-This is a living description of the current system. Historical technical choices belong in `docs/adr/`.
+This is a living description of the current software system. Historical technical choices belong in `docs/adr/`; proposed implementation approaches belong in version-linked delivery plans or technical design proposals.
 
 ## System context
 

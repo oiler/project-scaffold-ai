@@ -19,10 +19,11 @@ Never silently reconcile conflicting authoritative documents.
 
 ## Required behavior
 
-- Read `OBJECTIVE.md`, `STATUS.md`, the active version README, and relevant accepted specifications before proposing implementation work.
+- Read `OBJECTIVE.md`, `STATUS.md`, the active version README, relevant accepted specifications, and applicable product-design guidance before proposing implementation work.
 - Preserve stable artifact IDs in filenames, headings, links, commits, and reviews.
 - Separate verified facts, decisions, hypotheses, assumptions, and open questions.
 - Treat acceptance criteria as externally observable behavior, not implementation instructions.
+- Keep product experience, interaction, and visual-design guidance in `design/`; keep software architecture in the code repository.
 - Add links to evidence and record when time-sensitive evidence was checked.
 - Follow `policies/CHANGE-CONTROL.md`, `policies/VERSIONING.md`, and `policies/TRACEABILITY.md`.
 - Report unresolved ambiguity instead of inventing product requirements.
