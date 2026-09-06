@@ -14,6 +14,10 @@ An accepted specification may only change by:
 
 Accepted product decisions are superseded by new decision records rather than silently rewritten.
 
+## Readiness
+
+Before marking a specification accepted, run `scripts/spec-check.sh SPEC-NNN` from the code repository. It reports empty sections, missing requirements or acceptance criteria, leftover placeholders, and plan-mapping gaps. It is advisory here and required at release.
+
 ## Historical records
 
 Released manifests and completed acceptance records describe historical events. Do not rewrite them to match current understanding. Correct an error with a linked correction or follow-up record.

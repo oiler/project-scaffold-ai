@@ -23,6 +23,10 @@ Sessions started inside `docs/` or `code/` alone remain valid for focused work i
 - Never combine changes to both repositories in one commit. Commit each repository separately and cite the same stable IDs in both.
 - Do not run git commands against the workspace directory.
 
+## Starting implementation
+
+When a task begins implementation against a specification, run `code/scripts/spec-check.sh SPEC-NNN` first and report its findings. This is advisory: proceed unless the human says stop, but do not silently fill gaps it reports with engineering assumptions.
+
 ## Releasing
 
 Do not create a release tag until `code/scripts/release-check.sh` passes and the judgment items in `docs/policies/RELEASE.md` are confirmed by a human.

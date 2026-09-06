@@ -62,6 +62,11 @@ for id in $specs; do
   st=$(field "$f" status); ap=$(field "$f" approved_at)
   [[ $st == accepted ]] && ok "$id accepted" || fail "$id status is '$st', not accepted"
   [[ -n $ap && $ap != null ]] || fail "$id has no approved_at"
+  if "$code/scripts/spec-check.sh" "$id" --docs "$docs" >/dev/null 2>&1; then
+    ok "$id passes spec-check"
+  else
+    fail "$id fails spec-check (run scripts/spec-check.sh $id for details)"
+  fi
 done
 
 # 3. Acceptance record for this candidate

@@ -10,7 +10,7 @@ Run from the workspace root or from `code/`:
 code/scripts/release-check.sh MAJOR.MINOR.PATCH
 ```
 
-It exits nonzero and lists every failure. It checks that the code release manifest is complete and matches the version, the documentation baseline commit exists, every implemented specification is accepted by a named approver, the acceptance record names a human and the exact candidate commit, the docs release record exists and matches, both changelogs have an empty Unreleased section, `STATUS.md` is current, and both working trees are clean.
+It exits nonzero and lists every failure. It checks that the code release manifest is complete and matches the version, the documentation baseline commit exists, every implemented specification is accepted by a named approver and passes `spec-check.sh`, the acceptance record names a human and the exact candidate commit, the docs release record exists and matches, both changelogs have an empty Unreleased section, `STATUS.md` is current, and both working trees are clean.
 
 ## Before tagging, in order
 
