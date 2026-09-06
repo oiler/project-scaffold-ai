@@ -18,6 +18,8 @@ Use stable IDs so product intent can be traced without copying entire documents:
 
 IDs are never reused. Renaming a title does not change its ID.
 
+Record files are named `ID-NNN-short-title.md` inside the dossier directory for their type, for example `versions/1.4/specs/SPEC-014-scheduled-sync.md`. Release records are named `MAJOR.MINOR.PATCH.yaml`. Tooling locates records by ID prefix and directory, so keep both.
+
 ## Expected references
 
 - Specifications cite relevant evidence and decisions.
