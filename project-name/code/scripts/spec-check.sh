@@ -24,7 +24,12 @@ fail() { echo "FAIL $*"; fail=1; }
 warn() { echo "warn $*"; }
 ok()   { echo "ok   $*"; }
 field() { sed -nE "s/^[[:space:]]*$2:[[:space:]]*//p" "$1" | head -1 | sed -E 's/^"(.*)"$/\1/'; }
-placeholders() { grep -nE '\[[^]]+\]' "$1" | grep -vE '\]\(|\[ \]|\[x\]|\[[A-Z]+-[0-9]+(, ?[A-Z]+-[0-9]+)*\]' || true; }
+# Bracketed tokens outside fenced code, inline code, markdown links, checkboxes, and YAML ID lists.
+placeholders() {
+  awk '/^[[:space:]]*```/ {fence=!fence; next} !fence {gsub(/`[^`]*`/, ""); print NR":"$0}' "$1" \
+    | grep -E '\[[^]]+\]' \
+    | grep -vE '\]\(|\[ \]|\[x\]|\[[A-Z]+-[0-9]+(, ?[A-Z]+-[0-9]+)*\]' || true
+}
 # section <file> <heading> -> body lines that are not blank, comments, or sub-headings
 section() {
   awk -v h="## $2" '

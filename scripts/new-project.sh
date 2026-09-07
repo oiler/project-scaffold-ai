@@ -66,7 +66,9 @@ echo
 echo "Placeholders still requiring a human decision (templates excluded):"
 # Strip markdown links and checkboxes from each line first, then extract
 # bracketed tokens. Template files keep their placeholders by design.
-grep -rnE --exclude-dir=.git --exclude-dir=templates '\[[^]]+\]' "$target" \
+find "$target" -type f -not -path '*/.git/*' -not -path '*/templates/*' \
+  | while read -r f; do awk '/^[[:space:]]*```/ {fence=!fence; next} !fence {gsub(/`[^`]*`/, ""); print FILENAME":"NR":"$0}' "$f"; done \
+  | grep -E '\[[^]]+\]' \
   | grep -v 'ADR-NNN' \
   | sed -E 's/\[[^]]*\]\([^)]*\)//g; s/\[[ x]\]//g' \
   | awk -F: '{

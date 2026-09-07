@@ -29,8 +29,12 @@ field() { # field <file> <key>  -> value with surrounding quotes stripped
 list() { # list <file> <key> -> IDs under a yaml list key
   sed -nE "/^[[:space:]]*$2:/,/^[[:space:]]*[a-z_]+:/p" "$1" | grep -oE '[A-Z]+-[0-9]+' || true
 }
-# Bracketed tokens, excluding markdown links, checkboxes, and YAML flow lists of IDs.
-placeholders() { grep -nE '\[[^]]+\]' "$1" | grep -vE '\]\(|\[ \]|\[x\]|\[[A-Z]+-[0-9]+(, ?[A-Z]+-[0-9]+)*\]' || true; }
+# Bracketed tokens outside fenced code, inline code, markdown links, checkboxes, and YAML ID lists.
+placeholders() {
+  awk '/^[[:space:]]*```/ {fence=!fence; next} !fence {gsub(/`[^`]*`/, ""); print NR":"$0}' "$1" \
+    | grep -E '\[[^]]+\]' \
+    | grep -vE '\]\(|\[ \]|\[x\]|\[[A-Z]+-[0-9]+(, ?[A-Z]+-[0-9]+)*\]' || true
+}
 
 # 1. Code release manifest
 manifest="$code/release/manifest.yaml"
