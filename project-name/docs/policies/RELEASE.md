@@ -10,13 +10,13 @@ Run from the workspace root or from `code/`:
 code/scripts/release-check.sh MAJOR.MINOR.PATCH
 ```
 
-It exits nonzero and lists every failure. It checks that the code release manifest is complete and matches the version, the documentation baseline commit exists, every implemented specification is accepted by a named approver and passes `spec-check.sh`, the acceptance record names a human and the exact candidate commit, the docs release record exists and matches, both changelogs have an empty Unreleased section, `STATUS.md` is current, and both working trees are clean.
+It exits nonzero and lists every failure. It checks that the code release manifest is complete and matches the version, the documentation baseline commit exists, every implemented specification is accepted by a named approver, has a delivery plan unless the profile or a recorded waiver exempts it, and passes `spec-check.sh`, the acceptance record names a human and the exact candidate commit, the docs release record exists and matches, both changelogs have an empty Unreleased section, `STATUS.md` is current, and both working trees are clean.
 
 ## Before tagging, in order
 
 1. Specifications in `code/release/manifest.yaml` `implemented_specs` are `accepted` with `approved_at` set. Amendments made during implementation are recorded. See [`CHANGE-CONTROL.md`](CHANGE-CONTROL.md).
 2. The delivery plan's requirement mapping reflects what shipped.
-3. A `REVIEW-NNN` exists for the change set with every finding dispositioned.
+3. A `REVIEW-NNN` exists for the change set with every finding dispositioned and `approved_by` set by a human.
 4. `code/docs/testing/README.md` maps each requirement to its evidence.
 5. `ARCHITECTURE.md` and `DESIGN.md` are updated if structure or styling changed materially; an ADR exists for any consequential technical choice.
 6. `code/CHANGELOG.md` Unreleased entries are moved under the version heading.

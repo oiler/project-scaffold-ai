@@ -59,13 +59,24 @@ else
   specs=""
 fi
 
-# 2. Implemented specs accepted
+# 2. Implemented specs accepted, with a delivery plan unless waived
+vreadme="$docs/versions/$minor/README.md"
+profile=$(field "$vreadme" delivery_profile)
+plan_waived=0
+grep -qiE '^\|[[:space:]]*Delivery plan[[:space:]]*\|' "$vreadme" 2>/dev/null && plan_waived=1
 for id in $specs; do
   f=$(ls "$docs/versions/$minor/specs/$id"*.md 2>/dev/null | head -1)
   if [[ -z $f ]]; then fail "$id: no file under versions/$minor/specs/"; continue; fi
   st=$(field "$f" status); ap=$(field "$f" approved_at)
   [[ $st == accepted ]] && ok "$id accepted" || fail "$id status is '$st', not accepted"
   [[ -n $ap && $ap != null ]] || fail "$id has no approved_at"
+  if ! ls "$docs/versions/$minor/plans/"PLAN-*.md >/dev/null 2>&1 || ! grep -lqE "^[[:space:]]*- $id\$" "$docs/versions/$minor/plans/"PLAN-*.md; then
+    if [[ $plan_waived -eq 1 || $profile == quick-fix || $profile == experiment ]]; then
+      ok "$id has no plan (waived or profile $profile)"
+    else
+      fail "$id has no PLAN under versions/$minor/plans/ and profile '$profile' requires one; add a waiver row for 'Delivery plan' in versions/$minor/README.md to skip"
+    fi
+  fi
   if "$code/scripts/spec-check.sh" "$id" --docs "$docs" >/dev/null 2>&1; then
     ok "$id passes spec-check"
   else

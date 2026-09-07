@@ -24,6 +24,14 @@ owner: "[engineering owner]"
 | --- | --- | --- |
 | SPEC-NNN R1 | [Module or interface] | [Test or acceptance case] |
 
+## Delivery decisions
+
+<!-- Choices made while planning that are neither product requirements nor ADR-worthy. Route first: a choice that changes externally observable behavior is a specification amendment; a choice with long-lived architectural consequence is an ADR. Everything else is recorded here and inherits this plan's status. -->
+
+| Decision | Rationale | Approved by |
+| --- | --- | --- |
+| [Choice] | [Why] | [Approver] |
+
 ## Delivery sequence
 
 <!-- Describe independently reviewable increments, migrations, feature flags, and rollout order. -->
@@ -31,6 +39,14 @@ owner: "[engineering owner]"
 ## Testing and acceptance
 
 <!-- Cover unit, integration, end-to-end, manual, performance, security, accessibility, and rollback checks as applicable. -->
+
+### Mutation verification
+
+<!-- For each guard that folds two or more conditions into one call, list one mutation per condition, each tied to exactly one test that must go red. A mutation that cannot be tied to one test means the test design is wrong; fix it before code is written. A surviving mutation is not equivalent until the covered input space is enumerated. -->
+
+| Guard | Mutation | Test that must fail |
+| --- | --- | --- |
+| [Guard] | [Single condition removed or inverted] | [Test name] |
 
 ## Risks and mitigations
 

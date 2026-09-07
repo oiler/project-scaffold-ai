@@ -7,6 +7,8 @@ reviews:
   - "[artifact ID, PR, tag, or commit]"
 reviewer: "[reviewer]"
 reviewed_at: "[YYYY-MM-DD]"
+approved_by: null
+approved_at: null
 ---
 
 # REVIEW-NNN — [Review subject]
@@ -20,6 +22,8 @@ reviewed_at: "[YYYY-MM-DD]"
 <!-- Give an evidence-based assessment and distinguish blocking from advisory findings. -->
 
 ## Findings
+
+<!-- Dispositions are proposals until approved_by is set. A reviewer, human or agent, may recommend; only a named human approver accepts a disposition. -->
 
 ### F1 — [Finding]
 
