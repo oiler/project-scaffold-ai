@@ -4,7 +4,8 @@ title: "[Review subject]"
 status: draft
 product_version: "[MAJOR.MINOR]"
 reviews:
-  - "[artifact ID, PR, tag, or commit]"
+  - SPEC-NNN
+revision: "[PR, tag, or commit reviewed]"
 reviewer: "[reviewer]"
 reviewed_at: "[YYYY-MM-DD]"
 approved_by: null

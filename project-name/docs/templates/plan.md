@@ -20,9 +20,11 @@ owner: "[engineering owner]"
 
 ## Requirement mapping
 
-| Requirement | Implementation area | Verification evidence |
-| --- | --- | --- |
-| SPEC-NNN R1 | [Module or interface] | [Test or acceptance case] |
+| Requirement | Implementation area | Verification evidence | Performed by |
+| --- | --- | --- | --- |
+| SPEC-NNN R1 | [Module or interface] | [Test or acceptance case] | [agent/owner] |
+
+<!-- Performed by is `agent` when a test or script produces the evidence, `owner` when only a human observation can. Owner rows are never delegated to a subagent; the plan is blocked until the owner records the result. -->
 
 ## Delivery decisions
 
@@ -34,7 +36,7 @@ owner: "[engineering owner]"
 
 ## Delivery sequence
 
-<!-- Describe independently reviewable increments, migrations, feature flags, and rollout order. -->
+<!-- Describe independently reviewable increments, migrations, feature flags, and rollout order. Any commit or pull-request command written into a task brief carries the session's attribution trailers verbatim. -->
 
 ## Testing and acceptance
 

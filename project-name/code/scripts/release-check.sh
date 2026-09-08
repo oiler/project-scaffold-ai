@@ -62,8 +62,9 @@ fi
 # 2. Implemented specs accepted, with a delivery plan unless waived
 vreadme="$docs/versions/$minor/README.md"
 profile=$(field "$vreadme" delivery_profile)
-plan_waived=0
+plan_waived=0; review_waived=0
 grep -qiE '^\|[[:space:]]*Delivery plan[[:space:]]*\|' "$vreadme" 2>/dev/null && plan_waived=1
+grep -qiE '^\|[[:space:]]*Implementation review[[:space:]]*\|' "$vreadme" 2>/dev/null && review_waived=1
 for id in $specs; do
   f=$(ls "$docs/versions/$minor/specs/$id"*.md 2>/dev/null | head -1)
   if [[ -z $f ]]; then fail "$id: no file under versions/$minor/specs/"; continue; fi
@@ -76,6 +77,15 @@ for id in $specs; do
     else
       fail "$id has no PLAN under versions/$minor/plans/ and profile '$profile' requires one; add a waiver row for 'Delivery plan' in versions/$minor/README.md to skip"
     fi
+  fi
+  rv=$(grep -lE "^[[:space:]]*- $id\$" "$docs/versions/$minor/reviews/"REVIEW-*.md 2>/dev/null | head -1)
+  if [[ -n $rv ]]; then
+    ab=$(field "$rv" approved_by)
+    [[ -n $ab && $ab != null ]] && ok "$id reviewed in $(basename "$rv"), approved by $ab" || fail "$id review $(basename "$rv") has no approved_by"
+  elif [[ $review_waived -eq 1 || $profile == quick-fix || $profile == experiment ]]; then
+    ok "$id has no review (waived or profile $profile)"
+  else
+    fail "$id: no REVIEW under versions/$minor/reviews/ lists it in 'reviews:' and profile '$profile' requires one; add a waiver row for 'Implementation review' to skip"
   fi
   if "$code/scripts/spec-check.sh" "$id" --docs "$docs" >/dev/null 2>&1; then
     ok "$id passes spec-check"

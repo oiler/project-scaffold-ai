@@ -10,13 +10,24 @@ Run from the workspace root or from `code/`:
 code/scripts/release-check.sh MAJOR.MINOR.PATCH
 ```
 
-It exits nonzero and lists every failure. It checks that the code release manifest is complete and matches the version, the documentation baseline commit exists, every implemented specification is accepted by a named approver, has a delivery plan unless the profile or a recorded waiver exempts it, and passes `spec-check.sh`, the acceptance record names a human and the exact candidate commit, the docs release record exists and matches, both changelogs have an empty Unreleased section, `STATUS.md` is current, and both working trees are clean.
+It exits nonzero and lists every failure. It checks that the code release manifest is complete and matches the version, the documentation baseline commit exists, every implemented specification is accepted by a named approver, has a delivery plan and an approved review unless the profile or a recorded waiver exempts them, and passes `spec-check.sh`, the acceptance record names a human and the exact candidate commit, the docs release record exists and matches, both changelogs have an empty Unreleased section, `STATUS.md` is current, and both working trees are clean.
+
+## Deployment and the tag
+
+Acceptance precedes the tag, and the tag precedes production. A pipeline that deploys production on merge to the default branch inverts that order and must not be used. Choose one model and record it in `ARCHITECTURE.md` under Reliability and operations:
+
+| Model | Merge to default branch | Tag push |
+| --- | --- | --- |
+| Deploy from tags | Integration only; no deployment | Deploys production |
+| Staging on merge | Deploys a staging environment where acceptance is performed | Promotes that build to production |
+
+In both models the acceptance record's `candidate_commit` is the commit that was actually exercised, and the tag points at that commit.
 
 ## Before tagging, in order
 
 1. Specifications in `code/release/manifest.yaml` `implemented_specs` are `accepted` with `approved_at` set. Amendments made during implementation are recorded. See [`CHANGE-CONTROL.md`](CHANGE-CONTROL.md).
 2. The delivery plan's requirement mapping reflects what shipped.
-3. A `REVIEW-NNN` exists for the change set with every finding dispositioned and `approved_by` set by a human.
+3. A `REVIEW-NNN` names every implemented specification in its `reviews` list, has every finding dispositioned, and has `approved_by` set by a human.
 4. `code/docs/testing/README.md` maps each requirement to its evidence.
 5. `ARCHITECTURE.md` and `DESIGN.md` are updated if structure or styling changed materially; an ADR exists for any consequential technical choice.
 6. `code/CHANGELOG.md` Unreleased entries are moved under the version heading.

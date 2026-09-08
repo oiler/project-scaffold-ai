@@ -22,6 +22,8 @@ Sessions started inside `docs/` or `code/` alone remain valid for focused work i
 - Read across repositories freely. Every edit and every git operation targets one repository explicitly, for example `git -C code commit` or by running from inside that directory.
 - Never combine changes to both repositories in one commit. Commit each repository separately and cite the same stable IDs in both.
 - Do not run git commands against the workspace directory.
+- Commit and pull-request commands delegated to subagents or written into task briefs carry this session's attribution trailers verbatim.
+- A plan row marked `Performed by: owner` is a human step. Do not delegate it, simulate it, or mark it done; report it as pending until the owner records the result.
 
 ## Starting implementation
 
