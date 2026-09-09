@@ -17,6 +17,8 @@ When sources conflict, use this order and report the conflict:
 
 Never silently reconcile conflicting authoritative documents.
 
+Rank does not settle drift. A specification that serves no listed outcome, contradicts a principle, or touches a non-goal halts until a decision either changes `OBJECTIVE.md` or withdraws the specification. Report it; do not resolve it.
+
 ## Required behavior
 
 - Read `OBJECTIVE.md`, `STATUS.md`, the active version README, relevant accepted specifications, and applicable product-design guidance before proposing implementation work.
