@@ -13,7 +13,7 @@ When sources conflict, use this order and report the conflict:
 3. Accepted product decision records
 4. The active version scope
 5. `OBJECTIVE.md`
-6. Roadmap, research, plans, and status documents
+6. Roadmap, backlog, research, plans, and status documents
 
 Never silently reconcile conflicting authoritative documents.
 

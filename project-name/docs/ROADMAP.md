@@ -14,7 +14,7 @@ The roadmap orders product bets; it is not a promise or feature inventory. Link 
 
 ## Later or uncommitted
 
-<!-- Record plausible future work without implying a delivery commitment. -->
+<!-- Record plausible future work without implying a delivery commitment. Smaller unpromised items belong in `BACKLOG.md`. -->
 
 ## Changes since last review
 

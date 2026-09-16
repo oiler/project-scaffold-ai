@@ -7,6 +7,7 @@ This repository explains why the product exists, what behavior is required, how 
 - [`OBJECTIVE.md`](OBJECTIVE.md): durable purpose, users, outcomes, constraints, and non-goals
 - [`STATUS.md`](STATUS.md): current focus, state, risks, and next decisions
 - [`ROADMAP.md`](ROADMAP.md): ordered product bets and intended outcomes
+- [`BACKLOG.md`](BACKLOG.md): unpromised ideas and requests awaiting a decision
 - [`versions/`](versions/README.md): minor-version dossiers and patch-release records
 - [`decisions/`](decisions/README.md): consequential product decisions
 - [`research/`](research/README.md): evidence and learning

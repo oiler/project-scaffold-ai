@@ -2,7 +2,7 @@
 
 ## Living documents
 
-Objectives, roadmaps, research, status reports, draft specifications, and draft plans may evolve. Material changes should explain what changed and why.
+Objectives, roadmaps, backlog, research, status reports, draft specifications, and draft plans may evolve. Material changes should explain what changed and why.
 
 ## The objective
 
