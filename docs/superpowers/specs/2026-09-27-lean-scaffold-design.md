@@ -127,13 +127,15 @@ The repository then holds `.gitignore`, `README.md` (rewritten), `template/`, `s
 
 ## Global follow-ons
 
-Rules that apply to every project move to the global `CLAUDE.md`. The owner approves each edit as a drafted diff before the rebuild. These edits live outside this repository, so this spec describes them and doesn't store the global text.
+Rules that apply to every project move to the global `CLAUDE.md`. The owner approved each edit as a drafted diff, and all three landed on 2026-09-27, before the rebuild. These edits live outside this repository, so this spec describes them and doesn't store the global text.
 
 | # | Section | Change |
 |---|---|---|
-| 1 | Code defaults | Replace the red/green TDD bullet, including its trivial-change exemption, and the first sentence of the test-sizing bullet with the testing wording that follows this table. Keep the rule that scratch checks stay scratch. |
-| 2 | Document authority | In the Controlling row, promote a root `ROADMAP.md` that the project's `AGENTS.md` names as controlling. An agreement in the current session overrides `ROADMAP.md`, and the agent records the agreement there. Projects without one keep the rule that the controlling layer may be absent. |
-| 3 | Skills to use | Replace the rule that building means subagent-driven development with: "Choose the process the work needs (build directly, write a plan, or run `/orko-sdd`), state the choice in one line, and proceed unless the user objects. This overrides the superpowers defaults that require an approval gate before any implementation, and a written spec and plan for work superpowers classifies as architectural. A spec or plan gets at most one review round, run with `/orko-review`." |
+| 1 | Code defaults | Replace the red/green TDD bullet, including its trivial-change exemption, and the first sentence of the test-sizing bullet with a new Testing section holding the wording that follows this table. Keep the rule that scratch checks stay scratch. |
+| 2 | Document authority | In the Controlling row, promote a root `ROADMAP.md` that the project's `AGENTS.md` names as controlling. If the current work contradicts its v1 scope or current milestone, the agent stops and asks whether the roadmap is stale or the work is off course, then records the answer in the status log. Projects without one keep the rule that the controlling layer may be absent. |
+| 3 | Skills to use | Replace the rule that building means subagent-driven development with: when asked to build, choose the process the work needs (build directly, or plan and execute with superpowers), state the choice in one line, and proceed unless the user objects. This overrides the superpowers approval gate and its spec-and-plan requirement for architectural work. |
+
+The global file names only skills the model can invoke on its own. `orko-sdd` and `orko-review` stay out of it, because they run only when the user invokes them explicitly.
 
 Code review rules aren't global. Each project sets them under **Project rules** in its `AGENTS.md`.
 
