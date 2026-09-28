@@ -1,6 +1,6 @@
 # Archive
 
-`formal-v1/` is the scaffold this repository shipped before the lean scaffold replaced it. It started every project as two repositories, `docs/` for the product record and `code/` for the software, connected by stable artifact IDs, controlled documents, and release gates. The [lean scaffold design](../docs/superpowers/specs/2026-09-27-lean-scaffold-design.md) explains why it was replaced.
+`formal-v1/` is the scaffold this repository shipped before the lean scaffold replaced it. It started every project as two repositories, `docs/` for the product record and `code/` for the software, connected by stable artifact IDs, controlled documents, and release gates. The [lean scaffold design](../docs/superpowers/specs/2026-09-27-lean-scaffold-design.md) explains why the lean scaffold replaced it.
 
 Two tags preserve it:
 

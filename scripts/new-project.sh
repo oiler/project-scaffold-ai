@@ -1,85 +1,103 @@
 #!/usr/bin/env bash
-# Bootstrap a new project workspace from this scaffold.
+# Bootstrap a new project from this scaffold.
 #
 # Usage:
-#   scripts/new-project.sh <target-dir> <project-name> <organization> [--owner "<name>"] [--no-git]
+#   scripts/new-project.sh <target-dir> <project-name> [--owner "<name>"] [--no-git]
 #
-# Copies project-name/ to <target-dir>, replaces identity placeholders,
-# strips macOS metadata, initializes docs/ and code/ as independent git
-# repositories on branch master, and lists every placeholder that still
-# needs a human decision.
+# Copies template/ to <target-dir>, replaces identity placeholders,
+# initializes one git repository on branch master, and lists every
+# placeholder that still needs a human decision. The target appears only
+# after every step succeeds.
 set -euo pipefail
 
-usage() { sed -n '2,11p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
+usage() { sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//' >&2; exit 2; }
 
-[[ $# -ge 3 ]] || usage
-target=$1; name=$2; org=$3; shift 3
-owner=""; init_git=1
+[[ $# -ge 2 ]] || usage
+target=${1%/}; name=$2; shift 2
+owner=""; has_owner=0; init_git=1
 while [[ $# -gt 0 ]]; do
   case $1 in
-    --owner) owner=$2; shift 2 ;;
+    --owner) [[ $# -ge 2 ]] || usage; owner=$2; has_owner=1; shift 2 ;;
     --no-git) init_git=0; shift ;;
     *) usage ;;
   esac
 done
 
-scaffold="$(cd "$(dirname "$0")/.." && pwd)/project-name"
-[[ -d $scaffold ]] || { echo "scaffold not found: $scaffold" >&2; exit 1; }
-[[ ! -e $target ]] || { echo "target already exists: $target" >&2; exit 1; }
+template="$(cd "$(dirname "$0")/.." && pwd)/template"
+parent=$(dirname "$target")
+[[ $name =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "invalid project name: $name (use lowercase letters, digits, and hyphens)" >&2; exit 1; }
+[[ -d $template ]] || { echo "template not found: $template" >&2; exit 1; }
+[[ ! -e $target && ! -L $target ]] || { echo "target already exists: $target" >&2; exit 1; }
+[[ -d $parent ]] || { echo "parent directory does not exist: $parent" >&2; exit 1; }
 
 # Title-case the slug for "[Project Name]": my-app -> My App
-title=$(echo "$name" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')
+title=$(printf '%s\n' "$name" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')
 today=$(date +%Y-%m-%d)
 
-cp -R "$scaffold" "$target"
-find "$target" -name .DS_Store -delete
+# Build next to the target so the final mv is a rename on one filesystem.
+tmp=$(mktemp -d "$parent/.new-project.XXXXXX")
+trap 'rm -rf "$tmp"' EXIT
+work="$tmp/project"
+cp -R "$template" "$work"
+find "$work" -name .DS_Store -delete
 
-replace() {  # replace <from> <to> across all files in target
-  local from=$1 to=$2
-  grep -rl --exclude-dir=.git -F "$from" "$target" | while read -r f; do
-    sed -i '' "s|$(printf '%s' "$from" | sed 's/[][\.*^$|/]/\\&/g')|$to|g" "$f"
+# Values travel through the environment and \Q..\E, so perl treats both
+# sides as literal text: & | / \ and $ in a name come through unchanged.
+replace() {
+  local files
+  files=$(grep -rlF --exclude-dir=.git -e "$1" "$work" || true)
+  [[ -n $files ]] || return 0
+  printf '%s\n' "$files" | while IFS= read -r f; do
+    FROM=$1 TO=$2 perl -pi -e 's/\Q$ENV{FROM}\E/$ENV{TO}/g' "$f"
   done
 }
 
-replace "[organization/project-docs]" "$org/$name-docs"
-replace "[organization/project-code]" "$org/$name-code"
-replace "[organization]" "$org"
 replace "[project-name]" "$name"
 replace "[Project Name]" "$title"
 replace "[YYYY-MM-DD]" "$today"
-if [[ -n $owner ]]; then
-  for p in "[owner]" "[product owner]" "[engineering owner]" "[design owner]" "[accessibility owner]" "[decision owner]"; do
-    replace "$p" "$owner"
-  done
-fi
+[[ $has_owner -eq 0 ]] || replace "[owner]" "$owner"
 
 if [[ $init_git -eq 1 ]]; then
-  for repo in docs code; do
-    git -C "$target/$repo" init -q -b master
-    git -C "$target/$repo" add -A
-    git -C "$target/$repo" commit -q -m "initialize $name $repo repository from project scaffold"
-  done
+  git -C "$work" init -q -b master
+  git -C "$work" add -A
+  git -C "$work" commit -q -m "initialize $name from project scaffold"
 fi
+
+[[ ! -e $target && ! -L $target ]] || { echo "target appeared during the run: $target" >&2; exit 1; }
+mv "$work" "$target"
 
 echo "Created $target"
 echo
-echo "Placeholders still requiring a human decision (templates excluded):"
-# Strip markdown links and checkboxes from each line first, then extract
-# bracketed tokens. Template files keep their placeholders by design.
-find "$target" -type f -not -path '*/.git/*' -not -path '*/templates/*' \
-  | while read -r f; do awk '/^[[:space:]]*```/ {fence=!fence; next} !fence {gsub(/`[^`]*`/, ""); print FILENAME":"NR":"$0}' "$f"; done \
-  | grep -E '\[[^]]+\]' \
-  | grep -v 'ADR-NNN' \
-  | sed -E 's/\[[^]]*\]\([^)]*\)//g; s/\[[ x]\]//g' \
-  | awk -F: '{
-      loc=$1":"$2; line=substr($0, length(loc)+2)
-      while (match(line, /\[[^]]+\]/)) {
-        tok=substr(line, RSTART, RLENGTH)
-        if (tok !~ /^\[v?MAJOR\.MINOR(\.PATCH)?\]$/) print loc": "tok
-        line=substr(line, RSTART+RLENGTH)
+echo "Placeholders still requiring a human decision:"
+# A placeholder is a bracketed token outside fenced code, inline code,
+# markdown links, task checkboxes, and Keep a Changelog version headings.
+(cd "$target" && find . -type f -not -path './.git/*' | sed 's|^\./||' | LC_ALL=C sort | while IFS= read -r f; do
+  # Excluded spans are blanked to the same length rather than deleted, so a
+  # placeholder that contains inline code is still printed in full.
+  awk '
+    function mask(s, re,    out, pad) {
+      out = ""
+      while (match(s, re)) {
+        pad = sprintf("%" RLENGTH "s", "")
+        out = out substr(s, 1, RSTART - 1) pad
+        s = substr(s, RSTART + RLENGTH)
       }
-    }' \
-  | sed "s|^$target/||" \
-  | sort -u || true
-echo
-echo "Next: follow 'Starting a project' in the scaffold README."
+      return out s
+    }
+    /^[[:space:]]*(```|~~~)/ { fence = !fence; next }
+    fence { next }
+    /^[[:space:]]*\[[^]]+\]:[[:space:]]/ { next }
+    {
+      m = mask($0, "`[^`]*`")
+      m = mask(m, "\\[[^]]*\\]\\([^)]*\\)")
+      m = mask(m, "\\[[^]]*\\]\\[[^]]*\\]")
+      m = mask(m, "\\[[ xX]\\]")
+      if (m ~ /^#+[[:space:]]/) m = mask(m, "\\[(Unreleased|[0-9]+\\.[0-9]+\\.[0-9]+[^]]*)\\]")
+      off = 0
+      while (match(m, /\[[^]]+\]/)) {
+        print FILENAME ":" FNR ": " substr($0, off + RSTART, RLENGTH)
+        off += RSTART + RLENGTH - 1
+        m = substr(m, RSTART + RLENGTH)
+      }
+    }' "$f"
+done)
