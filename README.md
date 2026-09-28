@@ -10,14 +10,14 @@ The scaffold is files, not rules. Each file has a one-line purpose and a skeleto
 |---|---|
 | `template/` | The files every new project starts with |
 | `scripts/new-project.sh` | Bootstraps a project from `template/` |
-| `docs/superpowers/` | Specs and plans for this repository |
+| `docs/superpowers/` | Design specs for this repository |
 | `archive/` | The formal-v1 scaffold that this one replaced |
 
 The `AGENTS.md` and `CLAUDE.md` files under `template/` and `archive/` are material for other projects, not instructions for work in this repository.
 
 ## Start a project
 
-Run the bootstrap script from this repository:
+Run the bootstrap script from the root of this repository. It needs bash, perl, and git 2.28 or later:
 
 ```sh
 scripts/new-project.sh <target-dir> <project-name> [--owner "<name>"] [--no-git]
@@ -38,11 +38,11 @@ The script does the following:
 5. Moves the project into place. If any step fails, the script removes the temporary directory and creates no target.
 6. Prints every remaining placeholder with its file and line.
 
-A placeholder is a bracketed token outside markdown links, task checkboxes, fenced code, inline code, and Keep a Changelog version headings such as `[Unreleased]`. The placeholders left after a run are the questions the owner answers: what v1 includes, the principles, the design vision, and the project's own rules.
+A placeholder is a bracketed token outside markdown links, task checkboxes, fenced code, inline code, and Keep a Changelog version headings such as `[Unreleased]`. The placeholders left after a run are the questions the owner answers, such as what v1 includes, the principles, the design vision, and the project's own rules.
 
 ## Grow a project
 
-`template/PATHWAYS.md` lists files to add when a trigger occurs. For example, it suggests `DESIGN.md` when UI work starts, and `SECURITY.md` before the first internet-facing deployment. The copy in `template/` is canonical. When a project uses a pathway, add the project name to that row's **Used on** column.
+`template/PATHWAYS.md` lists files to add when a trigger occurs. For example, it suggests `DESIGN.md` when UI work starts, and `SECURITY.md` at the first internet-facing deployment, real users, or sensitive data. The copy in `template/` is canonical. When a project uses a pathway, add the project name to that row's **Used on** column.
 
 ## Formal-v1
 

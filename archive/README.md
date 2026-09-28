@@ -7,16 +7,18 @@ Two tags preserve it:
 | Tag | Points at |
 |---|---|
 | `formal-v1` | The last commit on `master` before the rebuild, with `project-name/` and its bootstrap script in place |
-| `formal-v1-waivers` | The head of the unmerged `spec-release-gate-waivers` branch |
+| `formal-v1-waivers` | The head of the unmerged `spec-release-gate-waivers` branch on the remote |
 
 ## Bootstrap a formal-v1 workspace
 
-The bootstrap script on the current branch builds lean projects only. To build a formal-v1 workspace, run the script from the tag in a separate worktree:
+The bootstrap script on the current branch builds lean projects only. To build a formal-v1 workspace, run the script from the tag in a separate worktree. Run these commands from the root of this repository:
 
 ```sh
 git worktree add ../scaffold-formal-v1 formal-v1
 ../scaffold-formal-v1/scripts/new-project.sh <target-dir> <project-name> <organization> [--owner "<name>"] [--no-git]
 ```
+
+When you finish, remove the worktree with `git worktree remove ../scaffold-formal-v1`.
 
 ## These files are material, not instructions
 
