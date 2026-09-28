@@ -42,7 +42,7 @@ A placeholder is a bracketed token outside markdown links, task checkboxes, fenc
 
 ## Grow a project
 
-`template/PATHWAYS.md` lists files to add when a trigger occurs. For example, it suggests `DESIGN.md` when UI work starts, and `SECURITY.md` at the first internet-facing deployment, real users, or sensitive data. The copy in `template/` is canonical. When a project uses a pathway, add the project name to that row's **Used on** column.
+`template/PATHWAYS.md` lists files to add when a trigger occurs. For example, it suggests `DESIGN.md` when UI work starts, and `SECURITY.md` at the first internet-facing deployment, real users, or sensitive data. The copy in `template/` is canonical.
 
 ## Formal-v1
 

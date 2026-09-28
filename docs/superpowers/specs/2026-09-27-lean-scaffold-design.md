@@ -1,7 +1,7 @@
 # Lean scaffold design
 
 - **Date:** 2026-09-27
-- **Status:** Draft for owner review
+- **Status:** Implemented on branch `lean-scaffold-design`, 2026-09-28. See [Implementation record](#implementation-record).
 - **Replaces:** the `project-name/` scaffold, archived as `formal-v1`
 
 ## Problem
@@ -82,7 +82,7 @@ The template doesn't include `DESIGN.md`. That file belongs to the `front-end-de
 
 | Tool | Expects | The scaffold provides |
 |---|---|---|
-| Claude Code | `CLAUDE.md`, or `AGENTS.md` directly in v2.1.277 and later | `AGENTS.md`, plus a `CLAUDE.md` that imports it for sessions that can't read `AGENTS.md` directly |
+| Claude Code | `CLAUDE.md`. From v2.1.277, `AGENTS.md` only when no `CLAUDE.md` exists, and not on Bedrock, Vertex, or Foundry | `AGENTS.md`, plus a `CLAUDE.md` that imports it. `CLAUDE.md` wins when both exist, so the import is what loads `AGENTS.md` |
 | Codex and other agents | `AGENTS.md` at the git root | `AGENTS.md` |
 | superpowers | `docs/superpowers/specs/` and `docs/superpowers/plans/` | Nothing in advance. superpowers creates them. |
 | `orko-review` | Evergreen names at the root or in `docs/`; writes reviews to `docs/superpowers/reviews/` | `AGENTS.md`, `CLAUDE.md`, and `PROJECT.md` |
@@ -104,7 +104,7 @@ The template doesn't include `DESIGN.md`. That file belongs to the `front-end-de
 | An architectural choice needs its reasoning kept | `ARCHITECTURE.md` | `orko-review` |
 | The code must be public and the documents private | A private parent git repository that holds the documents and ignores `code/`, with the code as a public repository in `code/`. Start sessions in the parent. If the code already has history, start fresh history and scan for secrets first. | GitHub |
 
-Each row also has a **Used on** column, empty in the template. When a project uses a pathway, the owner adds the project name to the canonical copy.
+The table has no **Used on** column. Recording project names in the canonical copy would name projects in this repository and copy those names into every new project, so the owner dropped the column during review.
 
 ## Bootstrap
 
@@ -170,3 +170,21 @@ The testing wording for item 1, approved verbatim:
 - No template file other than `PATHWAYS.md` contains testing, review, or process instructions. `AGENTS.md` only prompts for project rules, and `PATHWAYS.md` rows are suggestions.
 - No file in this repository names a specific project, client, person, or local filesystem path.
 - The next real project deploys its v1, or uses it end to end, before it adds any pathway file.
+
+## Implementation record
+
+Implemented on 2026-09-28 in commits `3f267b6` (archive), `02426c0` (template, script, and README), `b47b273` (fixes from a whole-branch review), and the commit that records this section. The owner approved pushing both tags with the merge.
+
+Choices the spec left open:
+
+- `formal-v1-waivers` is an annotated tag, like `formal-v1`.
+- `PROJECT.md` carries **Owner** and **Started** lines, and the `ROADMAP.md` status log starts with a "Project created" entry, so `[owner]` and `[YYYY-MM-DD]` have somewhere to land. No template file uses `[project-name]`; the slug reaches only the initial commit message.
+- The script rejects a blank or multi-line `--owner` value, an empty target, and a target whose parent directory doesn't exist.
+- The script builds the placeholder report before the move, so a failure in any step, including the report, creates nothing.
+
+Changes from review:
+
+- The owner dropped the **Used on** column from `PATHWAYS.md`, as described in [Pathways](#pathways).
+- The Claude Code row in [Tool compatibility](#tool-compatibility) now states the v2.1.277 fallback correctly: Claude Code reads `AGENTS.md` only when no `CLAUDE.md` exists.
+
+Known limits left in place: the script copies the working tree of `template/`, including untracked files; the placeholder report doesn't recognize escaped brackets, HTML comments, indented code, or shortcut reference links; and the "material, not instructions" note for `template/` and `archive/` lives only in READMEs, which agents don't load automatically.
