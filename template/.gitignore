@@ -4,3 +4,5 @@
 .DS_Store
 CLAUDE.local.md
 .claude/settings.local.json
+docs/versions/*/reviews/**/.lock
+tmp/

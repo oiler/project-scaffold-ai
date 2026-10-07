@@ -12,6 +12,7 @@
 - `PATHWAYS.md`: files to add as the project grows.
 - `.gitignore`: keeps local and secret files out of git.
 - `docs/context/`: background, such as kickoff notes, research, and briefs.
+- `docs/versions/`: one folder per release, with its record, specs, plans, and reviews. Its `README.md` explains the layout and the close-out. superpowers writes specs to `docs/versions/<version>/specs/` and plans to `docs/versions/<version>/plans/`, not to `docs/superpowers/`.
 
 ## Project rules
 
