@@ -10,10 +10,12 @@ The scaffold is files, not rules. Each file has a one-line purpose and a skeleto
 |---|---|
 | `template/` | The files every new project starts with |
 | `scripts/new-project.sh` | Bootstraps a project from `template/` |
+| `examples/` | Projects built from `template/`, with the placeholders answered |
 | `docs/superpowers/` | Design specs for this repository |
+| `docs/reports/` | Reports on how the scaffold held up in real projects |
 | `archive/` | The formal-v1 scaffold that this one replaced |
 
-The `AGENTS.md` and `CLAUDE.md` files under `template/` and `archive/` are material for other projects, not instructions for work in this repository.
+The `AGENTS.md` and `CLAUDE.md` files under `template/`, `examples/`, and `archive/` are material for other projects, not instructions for work in this repository.
 
 ## Start a project
 
