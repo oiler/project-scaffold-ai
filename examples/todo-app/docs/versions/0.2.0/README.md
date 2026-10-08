@@ -60,7 +60,7 @@ Record the result, the devices, and the browsers in Results.
 
 ### Outside the release
 
-During this release, sync between devices came up for the second time. The owner ruled it out for v1 in D1. Export and import became v0.3.0, and deployment moved to v1.0.0.
+During this release, sync between devices came up for the second time. The owner ruled it out for v1 in DEC1. Export and import became v0.3.0, and deployment moved to v1.0.0.
 
 ## Close-out
 

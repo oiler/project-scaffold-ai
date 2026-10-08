@@ -1,7 +1,7 @@
 # v1.0.0 security review
 
 - **Written:** 2026-09-29
-- **Reviews:** `master` at `v0.3.0`, and the deployment planned in D2
+- **Reviews:** `master` at `v0.3.0`, and the deployment planned in DEC2
 - **How:** The owner, with Claude Code and the `web-security` skill, before the first public deploy, as `AGENTS.md` requires
 - **Type:** Artifact. It changes no ruling. Finding 1 needs a decision, which is listed at the end.
 
@@ -33,4 +33,4 @@
 
 1. **Where to host.** Recommendation: Cloudflare Pages, which gives each project its own `pages.dev` origin and reads security headers from a `_headers` file. That fixes findings 1 and 2 together. Netlify works the same way, and either is free at this size.
 
-The owner approved Cloudflare Pages on 2026-09-30 (D3).
+The owner approved Cloudflare Pages on 2026-09-30 (DEC3).

@@ -1,8 +1,8 @@
 # v0.3.0: Backup
 
-The third roadmap milestone, promoted from `BACKLOG.md` on 2026-09-21. The list can be exported to a file and imported back. Tasks never leave the device on their own, so a file the person keeps is the only backup (D1).
+The third roadmap milestone, promoted from `BACKLOG.md` on 2026-09-21. The list can be exported to a file and imported back. Tasks never leave the device on their own, so a file the person keeps is the only backup (DEC1).
 
-Rulings: D1.
+Rulings: DEC1.
 
 ## What the release changes
 

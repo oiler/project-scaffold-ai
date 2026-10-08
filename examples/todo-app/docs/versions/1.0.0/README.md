@@ -2,7 +2,7 @@
 
 The fourth roadmap milestone, and the end of v1 scope. The app goes live at a public URL after a security review, and the owner's phone test passes there.
 
-Rulings: D1, D2, D3.
+Rulings: DEC1, DEC2, DEC3.
 
 ## This folder
 
@@ -24,7 +24,7 @@ Rulings: D1, D2, D3.
 
 ## Design
 
-The design first deployed to GitHub Pages (D2). The security review found two problems with it, so the release deploys to Cloudflare Pages instead (D3). This section describes the release as shipped.
+The design first deployed to GitHub Pages (DEC2). The security review found two problems with it, so the release deploys to Cloudflare Pages instead (DEC3). This section describes the release as shipped.
 
 ### Hosting
 
