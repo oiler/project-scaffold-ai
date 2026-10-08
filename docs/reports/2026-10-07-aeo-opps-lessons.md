@@ -12,15 +12,15 @@ aeo-opps started from the Agent Factory template, not this scaffold, but its pro
 |---|---|---|---|
 | 1 | Add the per-version folder: one `README.md` for each release that holds the design, the human test, and the results, plus `specs/`, `plans/`, and `reviews/` when the project uses superpowers and orko-review | `template/docs/versions/README.md`, and a line in the `template/AGENTS.md` file map | Applied |
 | 2 | Add a version close-out checklist, and state that a release isn't done until it's closed out | `template/docs/versions/README.md` | Applied |
-| 3 | Add the handoff prompt shape for a session that starts in a parent folder | `template/docs/versions/README.md`, and the parent-repository row in `PATHWAYS.md` | Applied in the versions README. The `PATHWAYS.md` row is unchanged |
-| 4 | Add a `## Commands` placeholder, including which commands only the owner runs | `template/AGENTS.md` | Open |
-| 5 | Label `docs/context/` as artifacts and `BACKLOG.md` as not promised in the file map | `template/AGENTS.md` | Open |
-| 6 | Ask for both a human test and a machine-led test in "How to know it works" | `template/ROADMAP.md` | Open |
+| 3 | Add the handoff prompt shape for a session that starts in a parent folder | `template/docs/versions/README.md`, and the parent-repository row in `PATHWAYS.md` | Applied |
+| 4 | Add a `## Commands` placeholder, including which commands only the owner runs | `template/AGENTS.md` | Applied, as an optional section |
+| 5 | Label `docs/context/` as artifacts and `BACKLOG.md` as not promised in the file map | `template/AGENTS.md` | Applied |
+| 6 | Ask for both a human test and a machine-led test in "How to know it works" | `template/ROADMAP.md` | Applied, as an optional prompt |
 | 7 | Add `tmp/` to the ignore list, for scratch files the owner shares with a session | `template/.gitignore` | Applied, because the versions README names `tmp/` |
 | 8 | Fix the `DECISIONS.md` row, with the entry format | `template/PATHWAYS.md` | Applied in the row. No separate starter file |
-| 9 | Promote a root `DECISIONS.md` that `AGENTS.md` names to controlling | Global `CLAUDE.md`, Document authority table | Open |
-| 10 | Promote the "end each output with decisions and a recommendation for each" rule | Global `CLAUDE.md` | Open |
-| 11 | When `BACKLOG.md` exists, send out-of-scope findings there instead of only listing them | Global `CLAUDE.md`, Scope and focus | Open |
+| 9 | Promote a root `DECISIONS.md` that `AGENTS.md` names to controlling | Global `CLAUDE.md`, Document authority table | Applied |
+| 10 | Promote the "end each output with decisions and a recommendation for each" rule | Global `CLAUDE.md` | Applied |
+| 11 | When `BACKLOG.md` exists, send out-of-scope findings there instead of only listing them | Global `CLAUDE.md`, Scope and focus | Applied |
 | 12 | Extend the timestamp hook and its global `CLAUDE.md` line to specs and plans in version folders | `~/.claude/hooks/superpowers-doc-timestamps.py`, global `CLAUDE.md` | Applied |
 
 Items 4 to 11 come from the 2026-10-06 review in chat. The v3.2.0 to v3.3.1 work confirms each of them, and item 8 has new evidence.
@@ -145,8 +145,15 @@ The recommendation for the row: append-only, with one allowed addition to an old
 | How `DECISIONS.md` handles replaced entries | One appended `Replaced:` line on the old entry | `template/PATHWAYS.md` |
 | Whether close-out assumes worktrees | A branch per version, with the worktree steps as a variant | `template/docs/versions/README.md` |
 
-## Open decisions
+## Owner rulings, 2026-10-08
 
-1. **Items 4 to 6 and 9 to 11 in the recommendations table.** Recommendation: apply 4 to 6 in the template, and 9 to 11 in the global `CLAUDE.md` as a separate change.
-2. **Whether every release gets a tag.** The close-out tags a release "when the project tags releases," because `PATHWAYS.md` still suggests tags only for a release with rollback stakes. aeo-opps tagged every release at no cost. Recommendation: tag every release, and remove the tags row from `PATHWAYS.md`.
-3. **The parent-repository row in `PATHWAYS.md`.** It says "Start sessions in the parent" without saying that a parent-folder session doesn't load the project's `AGENTS.md`. Recommendation: add that sentence to the row.
+| Question | Ruling | Applied in |
+|---|---|---|
+| A `## Commands` section in `AGENTS.md` | Optional for a project | `template/AGENTS.md`, as an optional placeholder |
+| Labels for `docs/context/` and `BACKLOG.md` in the file map | Approved | `template/AGENTS.md` |
+| A human test and a machine-led test in `ROADMAP.md` | Optional for a project | `template/ROADMAP.md`, as an optional placeholder |
+| `DECISIONS.md` as controlling, the end-of-output decisions list, and out-of-scope findings in `BACKLOG.md` | Approved, in the global `CLAUDE.md` | Global `CLAUDE.md`: Document authority, How I like to work, Scope and focus |
+| Whether every release gets a tag | No. Tagging a release is optional for a project. The close-out step stays conditional, and the tags row stays in `PATHWAYS.md` | No change |
+| The parent-repository row in `PATHWAYS.md` | Add that a session loads the `CLAUDE.md` and memories of the folder it starts in | `template/PATHWAYS.md` |
+
+Every recommendation in this report is now applied or ruled on.
