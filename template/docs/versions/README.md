@@ -13,7 +13,8 @@ docs/versions/<version>/
 ```
 
 - **Without superpowers,** `README.md` holds the design.
-- **With superpowers,** the spec and plan hold the design, and `README.md` is the index of every file in the folder.
+- **With superpowers,** the spec and plan hold the design.
+- Either way, when the folder holds more than `README.md`, its "This folder" section lists every file, so `README.md` is the index of the release.
 - Keep `specs/` and `plans/` directly in the release folder, not in a `superpowers/` subfolder. orko-review then writes every review of the release, whether of the spec, the plan, or `README.md`, to the one `reviews/` folder.
 - Commit the review runs, because later releases cite them.
 - Real user data stays out of the folder. Keep it in the gitignored `tmp/`.
@@ -32,7 +33,7 @@ Rulings: <the DECISIONS.md entries that govern this release, when the project ha
 
 ## This folder
 
-<With superpowers: every file in this folder, one row each. Leave this section out when the folder holds only this README.>
+<Every file in this folder, one row each. Leave this section out when the folder holds only this README.>
 
 | Path | What it is |
 |---|---|
@@ -61,7 +62,10 @@ Rulings: <the DECISIONS.md entries that govern this release, when the project ha
 
 ## Close-out
 
-- [ ] Results recorded in this file, and the version added to `CHANGELOG.md`
+- [ ] Every file in this folder listed under "This folder", and the human test recorded under "Results"
+- [ ] The version added to `CHANGELOG.md`
+- [ ] The milestone's row and log entry added to `docs/history.md`
+- [ ] The milestone removed from `ROADMAP.md`, so the next milestone is first in its list
 - [ ] The release branch merged into the branch releases build on, with `git merge --ff-only`
 - [ ] The release commit tagged, when the project tags releases: the commit that adds the version to `CHANGELOG.md`
 - [ ] The release branch deleted with `git branch -d`, which refuses a branch that isn't merged
@@ -71,6 +75,8 @@ Rulings: <the DECISIONS.md entries that govern this release, when the project ha
 ## Closing out a release
 
 A release isn't done until it's closed out. The next minor or major release starts by closing out the previous one, unless the owner says its work carries over. A patch release skips the close-out and stays on its release's branch. Closing out doesn't open a pull request, which can wait.
+
+Closing out moves the finished milestone from `ROADMAP.md` to `docs/history.md`, so the roadmap holds only planned work, and the release `README.md` holds the record of what the milestone delivered.
 
 When each release has its own git worktree, the close-out adds three steps: create the next release's worktree from the branch releases build on, move gitignored files the next release needs, such as `tmp/`, into it, then remove the old worktree before deleting its branch.
 

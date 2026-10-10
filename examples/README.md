@@ -14,7 +14,8 @@ Projects built from `template/` with the placeholders answered, to show what a f
 | A release folder for each roadmap milestone, written before code | `docs/versions/0.1.0/` to `docs/versions/1.0.0/` |
 | Human-test findings that changed the release | Results in `0.1.0`, `0.2.0`, and `0.3.0` |
 | Correcting an earlier release's record forward | `0.2.0/README.md` changes the Edit design from `0.1.0` and leaves `0.1.0` as written |
-| A backlog item promoted to the roadmap | v0.3.0, with the reason in the `ROADMAP.md` status log |
+| A backlog item promoted to the roadmap | v0.3.0, with the reason in the `docs/history.md` log |
+| A roadmap that holds only planned work | `ROADMAP.md` keeps the v1 scope and no finished milestones. `docs/history.md` lists them |
 | A review saved in a release folder | `docs/versions/1.0.0/reviews/security-review.md` |
 | The `DECISIONS.md` pathway, including a replaced entry | `DECISIONS.md`: DEC3 replaces DEC2, and DEC2 ends with a `Replaced:` line |
 | The `SECURITY.md` pathway at the first public deploy | `SECURITY.md`, and the review rule in `AGENTS.md` |

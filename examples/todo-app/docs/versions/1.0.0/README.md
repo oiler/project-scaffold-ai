@@ -79,7 +79,10 @@ v1 scope is complete.
 
 ## Close-out
 
-- [x] Results recorded in this file, and the version added to `CHANGELOG.md`
+- [x] Every file in this folder listed under "This folder", and the human test recorded under "Results"
+- [x] The version added to `CHANGELOG.md`
+- [x] The milestone's row and log entry added to `docs/history.md`
+- [x] The milestone removed from `ROADMAP.md`, so the next milestone is first in its list
 - [x] The release branch merged into `master`, with `git merge --ff-only`
 - [x] The release commit tagged `v1.0.0`
 - [x] The release branch deleted with `git branch -d`

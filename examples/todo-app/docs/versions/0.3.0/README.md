@@ -69,7 +69,10 @@ Record the result and the browser in Results.
 
 ## Close-out
 
-- [x] Results recorded in this file, and the version added to `CHANGELOG.md`
+- [x] The human test recorded under "Results". The folder holds only this README, so it has no "This folder" section
+- [x] The version added to `CHANGELOG.md`
+- [x] The milestone's row and log entry added to `docs/history.md`
+- [x] The milestone removed from `ROADMAP.md`, so the next milestone is first in its list
 - [x] The release branch merged into `master`, with `git merge --ff-only`
 - [x] The release commit tagged `v0.3.0`
 - [x] The release branch deleted with `git branch -d`

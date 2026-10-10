@@ -1,6 +1,6 @@
 # Roadmap
 
-What's being done now.
+Planned work, in order. When a milestone finishes, it moves to `docs/history.md`.
 
 ## v1 scope
 
@@ -17,7 +17,3 @@ What's being done now.
 ## Milestones
 
 [What are the milestones toward v1?]
-
-## Status log
-
-- [YYYY-MM-DD]: Project created.
