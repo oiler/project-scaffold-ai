@@ -46,6 +46,19 @@ A placeholder is a bracketed token outside markdown links, task checkboxes, fenc
 
 `template/PATHWAYS.md` lists files to add when a trigger occurs. For example, it suggests `DESIGN.md` when UI work starts, and `SECURITY.md` at the first internet-facing deployment, real users, or sensitive data. The copy in `template/` is canonical.
 
+## Document authority in a project
+
+`template/AGENTS.md` labels each file with its layer in the global `CLAUDE.md` authority table.
+
+| Layer | Files | What a conflict means |
+|---|---|---|
+| Evergreen | `AGENTS.md`, `CLAUDE.md` (which only imports `AGENTS.md`), `PROJECT.md`, plus `DESIGN.md` or `ARCHITECTURE.md` once a pathway adds them | Work that contradicts one stops, and the agent asks the owner before going on. |
+| Controlling | `ROADMAP.md`, and always the current prompt and what the owner agreed in the session | The latest agreement wins. If work contradicts the v1 scope or current milestone, the agent asks whether the roadmap is stale. |
+| Controlling, once added | `DECISIONS.md`, after `AGENTS.md` names it as controlling, as its pathway says to | A later entry that names an earlier one replaces it. |
+| Not promised | `BACKLOG.md` | None. It's a holding list, and an item gains authority only when it moves into `ROADMAP.md`. |
+| Artifact | `docs/context/`, `docs/history.md`, and the specs and plans under `docs/versions/` | Down-weighted against controlling docs and used for the reasoning behind decisions. |
+| No label | `README.md`, `CHANGELOG.md`, `PATHWAYS.md` | Reference only. None of them directs work. |
+
 ## Formal-v1
 
 The formal-v1 scaffold lives in `archive/formal-v1/` and at the `formal-v1` tag. [`archive/README.md`](archive/README.md) explains how to bootstrap a formal-v1 workspace.

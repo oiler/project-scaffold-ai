@@ -21,4 +21,6 @@
 
 ## Project rules
 
+- In project documents, write items that carry details as list items with sublists. Use a table only when it fits better, such as rows that compare a few short attributes.
+
 [When does code review happen, and who reviews? Any other rules this project needs?]
